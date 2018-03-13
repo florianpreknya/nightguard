@@ -52,6 +52,9 @@ class InfoInterfaceController: WKInterfaceController {
                 text += "\nBackground refreshes (background URL session started): \(ext.backgroundURLSessions)"
                 text += "\nNew data: \(ext.backgroundURLSessionUpdatesWithNewData), existing: \(ext.backgroundURLSessionUpdatesWithSameData), old: \(ext.backgroundURLSessionUpdatesWithOldData)\n"
                 
+                text += "\nSnapshot refreshes (background URL session started): \(ext.snapshotURLSessions)"
+                text += "\nNew data: \(ext.snapshotURLSessionUpdatesWithNewData), existing: \(ext.snapshotURLSessionUpdatesWithSameData), old: \(ext.snapshotURLSessionUpdatesWithOldData)\n"
+                
                 //            if !ext.ndRequestErrorMessages.isEmpty {
                 //                text += "Request errors: \n" + ext.ndRequestErrorMessages.joined(separator: "\n")
                 //            }

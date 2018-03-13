@@ -69,6 +69,12 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     var backgroundURLSessionUpdatesWithNewData: Int = 0
     var backgroundURLSessionUpdatesWithSameData: Int = 0
     var backgroundURLSessionUpdatesWithOldData: Int = 0
+    var snapshotURLSessions: Int = 0
+    var snapshotURLSessionUpdatesWithNewData: Int = 0
+    var snapshotURLSessionUpdatesWithSameData: Int = 0
+    var snapshotURLSessionUpdatesWithOldData: Int = 0
+    var isSnaphsotURLSession: Bool = false
+
     var phoneUpdates: Int = 0
     var phoneUpdatesWithNewData: Int = 0
     var phoneUpdatesWithSameData: Int = 0

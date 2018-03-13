@@ -38,12 +38,14 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         case .modularSmall:
             let modTemplate = CLKComplicationTemplateModularSmallStackText()
             modTemplate.line1TextProvider = CLKSimpleTextProvider(text: getSgvAndArrow(currentNightscoutData))
+            modTemplate.line1TextProvider.tintColor = UIColorChanger.getBgColor(currentNightscoutData.sgv)
             modTemplate.line2TextProvider = getRelativeDateTextProvider(for: currentNightscoutData.time)
             template = modTemplate
         case .modularLarge:
             let modTemplate = CLKComplicationTemplateModularLargeColumns()
             
             modTemplate.row1Column1TextProvider = CLKSimpleTextProvider(text: getOneLine(currentNightscoutData))
+            modTemplate.row1Column1TextProvider.tintColor = UIColorChanger.getBgColor(currentNightscoutData.sgv)
             modTemplate.row1Column2TextProvider = getRelativeDateTextProvider(for: currentNightscoutData.time)
             modTemplate.row2Column1TextProvider = CLKSimpleTextProvider(text: "")
             modTemplate.row2Column2TextProvider = CLKSimpleTextProvider(text: "")
@@ -52,11 +54,13 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             if self.oldNightscoutData.count > 1 {
                 let nightscoutData = self.oldNightscoutData[1]
                 modTemplate.row2Column1TextProvider = CLKSimpleTextProvider(text: getOneLine(nightscoutData))
+                modTemplate.row2Column1TextProvider.tintColor = UIColorChanger.getBgColor(nightscoutData.sgv)
                 modTemplate.row2Column2TextProvider = getRelativeDateTextProvider(for: nightscoutData.time)
             }
             if self.oldNightscoutData.count > 2 {
                 let nightscoutData = self.oldNightscoutData[2]
                 modTemplate.row3Column1TextProvider = CLKSimpleTextProvider(text: getOneLine(nightscoutData))
+                modTemplate.row3Column1TextProvider.tintColor = UIColorChanger.getBgColor(nightscoutData.sgv)
                 modTemplate.row3Column2TextProvider = getRelativeDateTextProvider(for: nightscoutData.time)
             }
             

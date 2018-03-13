@@ -40,6 +40,7 @@ extension InterfaceController: WKExtensionDelegate {
         print("Application will resign active.")
         if #available(watchOSApplicationExtension 3.0, *) {
             scheduleBackgroundRefresh()
+            scheduleSnapshotRefresh()
         }
     }
     
@@ -118,6 +119,16 @@ extension InterfaceController {
         
         // implement this if needed...
         
+        // AND schedule an URL session..
+        if self.backgroundSession == nil {
+            self.backgroundSession = scheduleURLSession()
+            snapshotURLSessions += 1
+            isSnaphsotURLSession = true
+        }
+        
+        // ...and schedule the next snapshot refresh
+        scheduleSnapshotRefresh()
+        
         snapshotTask.setTaskCompleted(restoredDefaultState: true, estimatedSnapshotExpiration: Date.distantFuture, userInfo: nil)
     }
     
@@ -127,8 +138,11 @@ extension InterfaceController {
         print("WKApplicationRefreshBackgroundTask received")
         
         // schedule an URL session..
-        self.backgroundSession = scheduleURLSession()
-        backgroundURLSessions += 1
+        if self.backgroundSession == nil {
+            self.backgroundSession = scheduleURLSession()
+            backgroundURLSessions += 1
+            isSnaphsotURLSession = false
+        }
         
         // ...and schedule the next background refresh
         scheduleBackgroundRefresh()
@@ -186,6 +200,7 @@ extension InterfaceController {
             .year,.minute,.hour,.second,
             .calendar]
         var dateComponents = Calendar.current.dateComponents(unitFlags, from: now)
+        dateComponents.second = 0
         
         var incrementHour = false
         if let minute = dateComponents.minute {
@@ -211,6 +226,50 @@ extension InterfaceController {
             
             if let error = error {
                 print("Error occurred while scheduling background refresh: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    @available(watchOSApplicationExtension 3.0, *)
+    fileprivate func scheduleSnapshotRefresh() {
+        
+        print("Schedule Snapshot Refresh...\n")
+        
+        // will do it around x:07:30, x:22:30, x:37:30 and x:52:30
+        let now = Date()
+        let unitFlags:Set<Calendar.Component> = [
+            .hour, .day, .month,
+            .year,.minute,.hour,.second,
+            .calendar]
+        var dateComponents = Calendar.current.dateComponents(unitFlags, from: now)
+        dateComponents.second = 30
+
+        var incrementHour = false
+        if let minute = dateComponents.minute {
+            if (0..<7).contains(minute) {
+                dateComponents.minute = 7
+            } else if (7..<22).contains(minute) {
+                dateComponents.minute = 22
+            } else if (22..<37).contains(minute) {
+                dateComponents.minute = 37
+            } else if (37..<52).contains(minute) {
+                dateComponents.minute = 52
+            } else {
+                dateComponents.minute = 7
+                incrementHour = true
+            }
+        }
+        
+        var scheduleTime = Calendar.current.date(from: dateComponents)!
+        if incrementHour {
+            scheduleTime = Calendar.current.date(byAdding: .hour, value: 1, to: scheduleTime)!
+        }
+        
+        // Schedule a new snapshot refresh in 15 Minutes
+        WKExtension.shared().scheduleSnapshotRefresh(withPreferredDate: scheduleTime, userInfo: nil) { (error: Error?) in
+            
+            if let error = error {
+                print("Error occurred while scheduling snapshot refresh: \(error.localizedDescription)")
             }
         }
     }
@@ -279,11 +338,23 @@ extension InterfaceController: URLSessionDownloadDelegate {
                 let updateResult = self.updateNightscoutData(newNightscoutData)
                 switch updateResult {
                 case .updateDataIsOld:
-                    self.backgroundURLSessionUpdatesWithOldData += 1
+                    if self.isSnaphsotURLSession {
+                        self.snapshotURLSessionUpdatesWithOldData += 1
+                    } else {
+                        self.backgroundURLSessionUpdatesWithOldData += 1
+                    }
                 case .updateDataAlreadyExists:
-                    self.backgroundURLSessionUpdatesWithSameData += 1
+                    if self.isSnaphsotURLSession {
+                        self.snapshotURLSessionUpdatesWithSameData += 1
+                    } else {
+                        self.backgroundURLSessionUpdatesWithSameData += 1
+                    }
                 case .updated:
-                    self.backgroundURLSessionUpdatesWithNewData += 1
+                    if self.isSnaphsotURLSession {
+                        self.snapshotURLSessionUpdatesWithNewData += 1
+                    } else {
+                        self.backgroundURLSessionUpdatesWithNewData += 1
+                    }
                 }
             })
         }
