@@ -304,7 +304,7 @@ class MainViewController: UIViewController {
                     self.errorPanelView.isHidden = true
                     self.paintCurrentBgData(currentNightscoutData: newNightscoutData)
                     
-                    WatchService.singleton.updateWatchComplicationIfPossible()
+//                    WatchService.singleton.updateWatchComplicationIfPossible()
                 }
             }
         })
