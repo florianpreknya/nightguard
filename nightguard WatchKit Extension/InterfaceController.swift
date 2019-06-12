@@ -25,12 +25,35 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     @IBOutlet var errorGroup: WKInterfaceGroup!
     @IBOutlet var activityIndicatorImage: WKInterfaceImage!
     
+    // raw values & noise
     @IBOutlet var rawbgLabel: WKInterfaceLabel!
     @IBOutlet var noiseLabel: WKInterfaceLabel!
     @IBOutlet var rawValuesGroup: WKInterfaceGroup!
     
     @IBOutlet var nightSafeIndicator: WKInterfaceGroup!
     
+    // loop
+    @IBOutlet var loopGroup: WKInterfaceGroup!
+    @IBOutlet var loopIndicatorGroup: WKInterfaceGroup!
+    @IBOutlet var loopIndicatorImage: WKInterfaceImage!
+    @IBOutlet var loopMinutesLabel: WKInterfaceLabel!
+    @IBOutlet var loopPredictionGroup: WKInterfaceGroup!
+    @IBOutlet var loopPredictionLabel: WKInterfaceLabel!
+    @IBOutlet var loopBasalGroup: WKInterfaceGroup!
+    @IBOutlet var loopBasalLabel: WKInterfaceLabel!
+    @IBOutlet var loopCOBGroup: WKInterfaceGroup!
+    @IBOutlet var loopCOBLabel: WKInterfaceLabel!
+
+    var isLoopUIExpanded = false {
+        didSet {
+            loopIndicatorGroup.setHorizontalAlignment(isLoopUIExpanded ? .left : .right)
+            loopMinutesLabel.setHidden(!isLoopUIExpanded)
+            loopPredictionGroup.setHidden(!isLoopUIExpanded)
+            loopBasalGroup.setHidden(!isLoopUIExpanded)
+            loopCOBGroup.setHidden(!isLoopUIExpanded)
+        }
+    }
+
     // set by AppMessageService when receiving messages/data from phone app and current bg data or charts should be repainted
     var shouldRepaintCurrentBgDataOnActivation = false
     var shouldRepaintChartsOnActivation = false
@@ -68,6 +91,10 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         createMenuItems()
         
         BackgroundRefreshLogger.info("InterfaceController is awake!")
+        
+        do {
+            self.isLoopUIExpanded = false
+        }
     }
     
     fileprivate func determineSceneHeightFromCurrentWatchType(interfaceBounds : CGRect) -> CGFloat {
@@ -243,6 +270,13 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     
     @IBAction func onSpriteKitViewDoubleTapped(_ sender: Any) {
         updateNightscoutData(forceRefresh: true, forceRepaintCharts: false)
+    }
+    
+    @IBAction func onShowHideLoopUI(_ sender: Any) {
+        self.animate(withDuration: 0.4) { [weak self] in
+            guard let self = self else { return }
+            self.isLoopUIExpanded = !self.isLoopUIExpanded
+        }
     }
     
     // this has to be created programmatically, since only this way
