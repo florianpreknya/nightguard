@@ -71,5 +71,6 @@ extension UserDefaultsValueGroups {
     struct GroupNames {
         static let watchSync = "watchSync"
         static let alarm = "alarm"
+        static let loop = "loop"
     }
 }

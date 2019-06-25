@@ -98,6 +98,15 @@ class PrefsViewController: CustomFormViewController {
         form +++ Section(header: "NIGHTSCOUT", footer: "Enter the URI to your Nightscout Server here. E.g. 'https://nightscout?token=mytoken'")
             <<< nightscoutURLRow
             
+            +++ Section(header: "LOOP", footer: "Loop module should be enabled on your Nightscout Server ( https://loopkit.github.io/loopdocs/nightscout/update_user)")
+            <<< SwitchRow() { row in
+                row.title = "Show Loop Data"
+                row.value = UserDefaultsRepository.loopIntegration.value
+                }.onChange { row in
+                    guard let value = row.value else { return }
+                    UserDefaultsRepository.loopIntegration.value = value
+            }
+            
             +++ Section(footer: "Keeping the screen active is of paramount importance if using the app as a night guard. We suggest leaving it ALWAYS ON.")
             <<< SwitchRow("KeepScreenActive") { row in
                 row.title = "Keep the Screen Active"

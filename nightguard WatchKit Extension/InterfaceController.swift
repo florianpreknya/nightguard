@@ -72,8 +72,21 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     fileprivate var cachedTodaysBgValues : [BloodSugar] = []
     fileprivate var cachedYesterdaysBgValues : [BloodSugar] = []
     
-    fileprivate var isActive: Bool = false
+    fileprivate var isActive: Bool = false {
+        didSet {
+            LoopService.singleton.isAppActive = isActive
+        }
+    }
     fileprivate var isFirstActivation: Bool = true
+    
+    // References to registered notification center observers
+    fileprivate var notificationObservers: [Any] = []
+    
+    deinit {
+        for observer in notificationObservers {
+            NotificationCenter.default.removeObserver(observer)
+        }
+    }
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -159,6 +172,15 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         
         // manually refresh the gui by fireing the timer
         updateNightscoutData(forceRefresh: isFirstActivation || shouldRepaintCurrentBgDataOnActivation, forceRepaintCharts: shouldRepaintChartsOnActivation)
+
+        updateLoopUI()
+        notificationObservers = [
+            NotificationCenter.default.addObserver(forName: .LoopDataChanged, object: LoopService.singleton, queue: nil) { [weak self] _ in
+                dispatchOnMain { [weak self] in
+                    self?.updateLoopUI()
+                }
+            }
+        ]
                 
         // Ask to get 8 minutes of cpu runtime to get the next values if
         // the app stays in frontmost state
@@ -200,6 +222,8 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         isActive = false
         timer.invalidate()
         spriteKitView.isPaused = true
+        
+        notificationObservers = []
     }
     
     // called when the crown rotates, rotationalDelta is the change since the last call (sign indicates direction).
@@ -262,14 +286,17 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     // check whether new Values should be retrieved
     @objc func timerDidEnd(_ timer:Timer){
         updateNightscoutData(forceRefresh: false, forceRepaintCharts: false)
+        updateLoopUI()
     }
     
     @IBAction func onLabelsGroupDoubleTapped(_ sender: Any) {
         updateNightscoutData(forceRefresh: true, forceRepaintCharts: false)
+        LoopService.singleton.refresh()
     }
     
     @IBAction func onSpriteKitViewDoubleTapped(_ sender: Any) {
         updateNightscoutData(forceRefresh: true, forceRepaintCharts: false)
+        LoopService.singleton.refresh()
     }
     
     @IBAction func onShowHideLoopUI(_ sender: Any) {
@@ -503,7 +530,49 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
             }
         }
     }
+    
+    fileprivate func updateLoopUI() {
+        
+        guard LoopService.singleton.enabled else {
+            loopGroup.setHidden(true)
+            return
+        }
+        
+        guard let loopData = LoopService.singleton.loopData else {
+            loopGroup.setHidden(true)
+            return
+        }
+        
+        loopMinutesLabel.setText("\(loopData.minutesAgo)min")
+        switch loopData.minutesAgo {
+        case 0...5:
+            loopIndicatorImage.setImageNamed("loop_fresh")
+        case 6...15:
+            loopIndicatorImage.setImageNamed("loop_aging")
+        default:
+            loopIndicatorImage.setImageNamed("loop_stale")
+        }
+        
+        if let predictionValues = loopData.predictedValues, !predictionValues.isEmpty {
+            loopPredictionLabel.setText("\(Int(predictionValues.last!))")
+//            loopPredictionGroup.setHidden(false)
+        } else {
+            loopPredictionLabel.setText(" - ")
+//            loopPredictionGroup.setHidden(true)
+        }
+        
+        if let basalRate = loopData.enactedBasalRate {
+            loopBasalLabel.setText(String(format: "%.3fU", basalRate))
+//            loopBasalGroup.setHidden(false)
+        } else {
+            loopBasalLabel.setText("schedule")
+//            loopBasalGroup.setHidden(true)
+        }
 
+        loopCOBLabel.setText("\(Int(loopData.cob))g")
+        
+        loopGroup.setHidden(false)
+    }
 }
 
 @available(watchOSApplicationExtension 3.0, *)

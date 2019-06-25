@@ -103,6 +103,11 @@ class UserDefaultsRepository {
     // show/hide stats
     static let showStats = UserDefaultsValue<Bool>(key: "showStats", default: true)
     
+    // Loop integration state
+    static let loopIntegration = UserDefaultsValue<Bool>(key: "loopIntegration", default: false)
+        .group(UserDefaultsValueGroups.GroupNames.loop)
+        .group(UserDefaultsValueGroups.GroupNames.watchSync)
+    
     /* Parses the URI entered in the UI and extracts the token if one is present. */
     fileprivate static func parseBaseUri() {
         url = nil

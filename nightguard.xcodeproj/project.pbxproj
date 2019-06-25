@@ -161,6 +161,15 @@
 		D18C5D8A22293C220099D96E /* BasicStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C5D8922293C220099D96E /* BasicStats.swift */; };
 		D18C5D8B22293C230099D96E /* BasicStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C5D8922293C220099D96E /* BasicStats.swift */; };
 		D18C5D8C22293C230099D96E /* BasicStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18C5D8922293C220099D96E /* BasicStats.swift */; };
+		D1A4DEB522B8B62700F243F5 /* LoopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4DEB422B8B62700F243F5 /* LoopService.swift */; };
+		D1A4DEB622B8B62700F243F5 /* LoopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4DEB422B8B62700F243F5 /* LoopService.swift */; };
+		D1A4DEB722B8B62700F243F5 /* LoopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4DEB422B8B62700F243F5 /* LoopService.swift */; };
+		D1A4DEB922B9175A00F243F5 /* LoopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4DEB822B9175A00F243F5 /* LoopData.swift */; };
+		D1A4DEBA22B9175A00F243F5 /* LoopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4DEB822B9175A00F243F5 /* LoopData.swift */; };
+		D1A4DEBB22B9175A00F243F5 /* LoopData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4DEB822B9175A00F243F5 /* LoopData.swift */; };
+		D1A4DEC922BB764400F243F5 /* DateFormatter+ISO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4DEC822BB764400F243F5 /* DateFormatter+ISO.swift */; };
+		D1A4DECA22BB764500F243F5 /* DateFormatter+ISO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4DEC822BB764400F243F5 /* DateFormatter+ISO.swift */; };
+		D1A4DECB22BB764500F243F5 /* DateFormatter+ISO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A4DEC822BB764400F243F5 /* DateFormatter+ISO.swift */; };
 		D1AEFED821FE00A200821DF6 /* AnyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AEFED721FE00A200821DF6 /* AnyConvertible.swift */; };
 		D1AEFED921FE011B00821DF6 /* AnyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AEFED721FE00A200821DF6 /* AnyConvertible.swift */; };
 		D1AEFEDA21FE011C00821DF6 /* AnyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AEFED721FE00A200821DF6 /* AnyConvertible.swift */; };
@@ -394,6 +403,9 @@
 		D16FC35A226E129400AB4DE3 /* MenuActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuActionCell.swift; sourceTree = "<group>"; };
 		D17F7937224D3C500074907B /* PersistentHighViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentHighViewController.swift; sourceTree = "<group>"; };
 		D18C5D8922293C220099D96E /* BasicStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStats.swift; sourceTree = "<group>"; };
+		D1A4DEB422B8B62700F243F5 /* LoopService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopService.swift; sourceTree = "<group>"; };
+		D1A4DEB822B9175A00F243F5 /* LoopData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopData.swift; sourceTree = "<group>"; };
+		D1A4DEC822BB764400F243F5 /* DateFormatter+ISO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ISO.swift"; sourceTree = "<group>"; };
 		D1AEFED721FE00A200821DF6 /* AnyConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyConvertible.swift; sourceTree = "<group>"; };
 		D1B777E32243E27B003FEDF0 /* TouchReportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchReportingView.swift; sourceTree = "<group>"; };
 		D1B777E52244C11B003FEDF0 /* Comparable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
@@ -521,6 +533,7 @@
 				43F1E1101D076C1C00C329A2 /* NightscoutService.swift */,
 				43F1E0E91D0768EF00C329A2 /* WatchService.swift */,
 				D133079D21C8D4CF00DC6879 /* PredictionService.swift */,
+				D1A4DEB422B8B62700F243F5 /* LoopService.swift */,
 			);
 			name = external;
 			sourceTree = "<group>";
@@ -660,6 +673,7 @@
 				432E62DE1D10ACD200DD7978 /* Units.swift */,
 				D16C8EDC22106C9300192117 /* QuickSnoozeOption.swift */,
 				D18C5D8922293C220099D96E /* BasicStats.swift */,
+				D1A4DEB822B9175A00F243F5 /* LoopData.swift */,
 			);
 			name = domain;
 			sourceTree = "<group>";
@@ -710,6 +724,7 @@
 				D16C8EDE2211047300192117 /* UIViewController+Extensions.swift */,
 				D16C8EDA221068F000192117 /* VolumeChangeDetector.swift */,
 				D1B777E52244C11B003FEDF0 /* Comparable+Extensions.swift */,
+				D1A4DEC822BB764400F243F5 /* DateFormatter+ISO.swift */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -944,7 +959,7 @@
 				TargetAttributes = {
 					43647BC91BFF6435004389F9 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = BSAVUVP8PV;
+						DevelopmentTeam = 66QQCRE7XS;
 						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -957,20 +972,20 @@
 					};
 					43647BDD1BFF6435004389F9 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = BSAVUVP8PV;
+						DevelopmentTeam = 66QQCRE7XS;
 						LastSwiftMigration = 0900;
 						TestTargetID = 43647BC91BFF6435004389F9;
 					};
 					43647BE81BFF6435004389F9 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = BSAVUVP8PV;
+						DevelopmentTeam = 66QQCRE7XS;
 						LastSwiftMigration = 0900;
 						TestTargetID = 43647BC91BFF6435004389F9;
 					};
 					43647BF11BFF6435004389F9 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = BSAVUVP8PV;
-						LastSwiftMigration = 1010;
+						DevelopmentTeam = 66QQCRE7XS;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -980,7 +995,7 @@
 					};
 					43647C001BFF6435004389F9 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = BSAVUVP8PV;
+						DevelopmentTeam = 66QQCRE7XS;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1248,6 +1263,7 @@
 				D160D088220C537C002B4633 /* LowPredictionViewController.swift in Sources */,
 				D1ECDA1F2201075B002BE6F9 /* ObservationToken.swift in Sources */,
 				43F1E1111D076C1C00C329A2 /* NightscoutService.swift in Sources */,
+				D1A4DEB522B8B62700F243F5 /* LoopService.swift in Sources */,
 				43288A701D20284600EE3999 /* DoubleExtension.swift in Sources */,
 				D16C8EDF2211047300192117 /* UIViewController+Extensions.swift in Sources */,
 				D1ECDA262202C8F0002BE6F9 /* UIColorExtension.swift in Sources */,
@@ -1260,6 +1276,7 @@
 				D16FC35B226E129400AB4DE3 /* MenuActionCell.swift in Sources */,
 				D1E6B897219C69D9007ED4FE /* Helpers.swift in Sources */,
 				D133079821C85FAE00DC6879 /* Regression.swift in Sources */,
+				D1A4DEC922BB764400F243F5 /* DateFormatter+ISO.swift in Sources */,
 				43F1E0EA1D0768EF00C329A2 /* WatchService.swift in Sources */,
 				D16C8ED92210687200192117 /* MPVolumeViewExtension.swift in Sources */,
 				43E89E571E659102005B0A65 /* ChartScene.swift in Sources */,
@@ -1296,6 +1313,7 @@
 				D16FC356226AE99F00AB4DE3 /* MenuActionController.swift in Sources */,
 				43F1E1081D07698000C329A2 /* PrefsViewController.swift in Sources */,
 				43F1E1071D07698000C329A2 /* NightscoutData.swift in Sources */,
+				D1A4DEB922B9175A00F243F5 /* LoopData.swift in Sources */,
 				D10ACE412063C2A300F41EE7 /* BackgroundRefreshSettings.swift in Sources */,
 				D1BA903A20D304BE00A0EBD1 /* UIView+Extensions.swift in Sources */,
 				D123EFEB21FB70A700CE8718 /* KeepAwakeMessage.swift in Sources */,
@@ -1324,6 +1342,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				439C391B1C0E295C00D89872 /* ChartPainterTest.swift in Sources */,
+				D1A4DEBA22B9175A00F243F5 /* LoopData.swift in Sources */,
+				D1A4DECA22BB764500F243F5 /* DateFormatter+ISO.swift in Sources */,
 				D1CE8CC12204B07F0075FF8A /* Colors.swift in Sources */,
 				4351E6B21D2EFDFE001E4AE4 /* TimeServiceTest.swift in Sources */,
 				D1F2F57A21EF131500CEB874 /* Regression.swift in Sources */,
@@ -1343,6 +1363,7 @@
 				437EEDC31FB716C400694EAD /* StatisticsRepository.swift in Sources */,
 				D18C5D8B22293C230099D96E /* BasicStats.swift in Sources */,
 				D133078C21C85DAA00DC6879 /* ArrayExtension.swift in Sources */,
+				D1A4DEB622B8B62700F243F5 /* LoopService.swift in Sources */,
 				432E62DA1D0CC3DE00DD7978 /* TimeService.swift in Sources */,
 				D1F2F57E21EF134400CEB874 /* RegressionHelper.swift in Sources */,
 				D112DD3721EA600200ECFB5E /* Helpers.swift in Sources */,
@@ -1387,6 +1408,7 @@
 				D1BD14E7205BCCF200B93389 /* BackgroundRefreshLogger.swift in Sources */,
 				D1E6B898219C6A86007ED4FE /* Helpers.swift in Sources */,
 				D112DD3521E9E2E700ECFB5E /* TimerExtension.swift in Sources */,
+				D1A4DEB722B8B62700F243F5 /* LoopService.swift in Sources */,
 				43E89E5C1E6A1D72005B0A65 /* ChartScene.swift in Sources */,
 				D123EFE921FB643D00CE8718 /* EmptyWatchMessage.swift in Sources */,
 				D1AEFED921FE011B00821DF6 /* AnyConvertible.swift in Sources */,
@@ -1397,6 +1419,7 @@
 				D133079F21C8D4CF00DC6879 /* PredictionService.swift in Sources */,
 				437EEDC41FB7180000694EAD /* NightscoutDataRepository.swift in Sources */,
 				D1ECDA282202C8F0002BE6F9 /* UIColorExtension.swift in Sources */,
+				D1A4DECB22BB764500F243F5 /* DateFormatter+ISO.swift in Sources */,
 				43647C0D1BFF6435004389F9 /* NotificationController.swift in Sources */,
 				432E62F01D188A2400DD7978 /* UnitsConverter.swift in Sources */,
 				43D28A0620321AAF003859DE /* AlarmRule.swift in Sources */,
@@ -1415,6 +1438,7 @@
 				D133079921C85FAE00DC6879 /* Regression.swift in Sources */,
 				D133079B21C85FAE00DC6879 /* Matrix.swift in Sources */,
 				43F1E10B1D076B1D00C329A2 /* BloodSugar.swift in Sources */,
+				D1A4DEBB22B9175A00F243F5 /* LoopData.swift in Sources */,
 				D123EFE621FB31FF00CE8718 /* WatchMessageService.swift in Sources */,
 				43794F4D1C34248500DB8B58 /* InfoInterfaceController.swift in Sources */,
 				D1CE8CC22204B07F0075FF8A /* Colors.swift in Sources */,
@@ -1604,10 +1628,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				INFOPLIST_FILE = "nightguard WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard.watchkitapp2.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard.watchkitapp2.watchkitextension;
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1629,10 +1653,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				INFOPLIST_FILE = "nightguard WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard.watchkitapp2.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard.watchkitapp2.watchkitextension;
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1656,11 +1680,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				IBSC_MODULE = scoutwatch_WatchKit_Extension;
 				INFOPLIST_FILE = "nightguard WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard.watchkitapp2";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard.watchkitapp2;
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -1683,11 +1707,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				IBSC_MODULE = scoutwatch_WatchKit_Extension;
 				INFOPLIST_FILE = "nightguard WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard.watchkitapp2";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard.watchkitapp2;
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -1707,11 +1731,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = nightguard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard;
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1729,11 +1753,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = nightguard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard;
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1747,10 +1771,10 @@
 			baseConfigurationReference = 7400B95330C230ECDCCD5101 /* Pods-nightguardTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				INFOPLIST_FILE = nightguardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguardTests";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguardTests;
 				PRODUCT_NAME = nightguard;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1763,10 +1787,10 @@
 			baseConfigurationReference = 7F9704503F86EC3FF0B48937 /* Pods-nightguardTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				INFOPLIST_FILE = nightguardTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguardTests";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguardTests;
 				PRODUCT_NAME = nightguard;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1778,10 +1802,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5553B4519FFD16D717473867 /* Pods-nightguardUITests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				INFOPLIST_FILE = nightguardUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguardUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguardUITests;
 				PRODUCT_NAME = nightguard;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -1794,10 +1818,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2CD1F1A801015AC39114CEC2 /* Pods-nightguardUITests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = BSAVUVP8PV;
+				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				INFOPLIST_FILE = nightguardUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguardUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguardUITests;
 				PRODUCT_NAME = nightguard;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

@@ -129,6 +129,52 @@ class NightscoutService {
             }
         }
     }
+    
+    /* Reads the last Loop data from the nightscout server. */
+    @discardableResult
+    func readLoopData(_ resultHandler : @escaping (NightscoutRequestResult<LoopData?>) -> Void) -> URLSessionTask? {
+        
+        // Get the current data from REST-Call
+        let url = UserDefaultsRepository.getUrlWithPathAndQueryParameters(path: "api/v1/devicestatus.json", queryParams: [:])
+        guard url != nil else {
+            resultHandler(.error(createEmptyOrInvalidUriError()))
+            return nil
+        }
+        
+        let request = URLRequest(url: url!, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 20) as URLRequest
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            
+            dispatchOnMain { [unowned self] in
+                guard error == nil else {
+                    resultHandler(.error(error!))
+                    return
+                }
+                
+                guard data != nil else {
+                    resultHandler(.error(self.createNoDataError(description: "No data received from Nightscout devicestatus API")))
+                    return
+                }
+                
+                if let loopData = LoopData(from: data!) {
+                    resultHandler(.data(loopData))
+                } else {
+                    resultHandler(.data(nil))
+                }
+            }
+        })
+        
+        task.resume()
+        return task
+    }
+    
+    func readLoopData(_ resultHandler : @escaping (LoopData?) -> Void) {
+        self.readLoopData { (result: NightscoutRequestResult<LoopData?>)  in
+            if case .data(let data) = result {
+                resultHandler(data)
+            }
+        }
+    }
 
     /* Reads all data between two timestamps and limits the maximum return values to 400. */
     @discardableResult

@@ -139,7 +139,7 @@
                                                 <group alignment="right" layout="vertical" spacing="2" id="7et-RM-5lc">
                                                     <items>
                                                         <imageView alignment="left" image="loop_fresh" contentMode="scaleAspectFit" id="lNa-n1-hND"/>
-                                                        <label alignment="center" verticalAlignment="center" text="4min" numberOfLines="2" id="qch-q4-Lk3">
+                                                        <label alignment="center" verticalAlignment="center" text="1min" minimumScaleFactor="0.0" id="qch-q4-Lk3">
                                                             <fontDescription key="font" type="system" pointSize="10"/>
                                                         </label>
                                                     </items>
@@ -178,7 +178,7 @@
                                                     <color key="backgroundColor" white="1" alpha="0.50470890410000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <edgeInsets key="margins" left="1" right="1" top="1" bottom="1"/>
                                                 </group>
-                                                <group width="55" alignment="right" layout="vertical" radius="2" spacing="0.0" id="w1M-eK-1N0">
+                                                <group width="50" alignment="right" layout="vertical" radius="2" spacing="0.0" id="w1M-eK-1N0">
                                                     <items>
                                                         <label width="1" alignment="left" verticalAlignment="center" text="BASAL" textAlignment="center" numberOfLines="2" minimumScaleFactor="0.20000000000000001" id="jE0-Ch-gAB">
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -186,7 +186,7 @@
                                                         </label>
                                                         <group width="1" alignment="left" verticalAlignment="center" radius="2" id="LVF-mv-jKT">
                                                             <items>
-                                                                <label width="100" alignment="left" text="T: 0.200U" textAlignment="center" id="jor-Fi-ZAB">
+                                                                <label width="100" alignment="left" text="0.200U" textAlignment="center" id="jor-Fi-ZAB">
                                                                     <fontDescription key="font" type="system" pointSize="10"/>
                                                                 </label>
                                                             </items>
