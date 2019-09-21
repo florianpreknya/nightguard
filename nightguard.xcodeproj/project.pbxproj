@@ -1651,7 +1651,7 @@
 				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				INFOPLIST_FILE = "nightguard WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard.watchkitapp2.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard.watchkitapp.watchkitextension";
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1676,7 +1676,7 @@
 				DEVELOPMENT_TEAM = 66QQCRE7XS;
 				INFOPLIST_FILE = "nightguard WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard.watchkitapp2.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard.watchkitapp.watchkitextension";
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1704,7 +1704,7 @@
 				IBSC_MODULE = scoutwatch_WatchKit_Extension;
 				INFOPLIST_FILE = "nightguard WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard.watchkitapp2;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard.watchkitapp";
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
@@ -1731,7 +1731,7 @@
 				IBSC_MODULE = scoutwatch_WatchKit_Extension;
 				INFOPLIST_FILE = "nightguard WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.my-wan.dhe.nightguard.watchkitapp2;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.my-wan.dhe.nightguard.watchkitapp";
 				PRODUCT_NAME = nightguard;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
