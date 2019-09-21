@@ -105,6 +105,9 @@
 		D112DD3821EA61A700ECFB5E /* NightscoutCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4317D2F11FB0E875004F964B /* NightscoutCacheService.swift */; };
 		D112DD3A21EB502300ECFB5E /* BloodSugarArrayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D112DD3921EB502300ECFB5E /* BloodSugarArrayTest.swift */; };
 		D112DD3C21EB507E00ECFB5E /* PredictionServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D112DD3B21EB507E00ECFB5E /* PredictionServiceTest.swift */; };
+		D12225D222CE338000A3EFF2 /* LoopStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12225D122CE338000A3EFF2 /* LoopStateView.swift */; };
+		D12225D422CE3F5A00A3EFF2 /* LoopPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12225D322CE3F5A00A3EFF2 /* LoopPanelView.swift */; };
+		D12225D622CE3F7800A3EFF2 /* LoopPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D12225D522CE3F7800A3EFF2 /* LoopPanelView.xib */; };
 		D123EFE621FB31FF00CE8718 /* WatchMessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D96CB921FB0E910035A60E /* WatchMessageService.swift */; };
 		D123EFE821FB643D00CE8718 /* EmptyWatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D123EFE721FB643D00CE8718 /* EmptyWatchMessage.swift */; };
 		D123EFE921FB643D00CE8718 /* EmptyWatchMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D123EFE721FB643D00CE8718 /* EmptyWatchMessage.swift */; };
@@ -369,6 +372,9 @@
 		D112DD3321E9E2DF00ECFB5E /* TimerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerExtension.swift; sourceTree = "<group>"; };
 		D112DD3921EB502300ECFB5E /* BloodSugarArrayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodSugarArrayTest.swift; sourceTree = "<group>"; };
 		D112DD3B21EB507E00ECFB5E /* PredictionServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionServiceTest.swift; sourceTree = "<group>"; };
+		D12225D122CE338000A3EFF2 /* LoopStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopStateView.swift; sourceTree = "<group>"; };
+		D12225D322CE3F5A00A3EFF2 /* LoopPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopPanelView.swift; sourceTree = "<group>"; };
+		D12225D522CE3F7800A3EFF2 /* LoopPanelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoopPanelView.xib; sourceTree = "<group>"; };
 		D123EFE721FB643D00CE8718 /* EmptyWatchMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWatchMessage.swift; sourceTree = "<group>"; };
 		D123EFEA21FB70A700CE8718 /* KeepAwakeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepAwakeMessage.swift; sourceTree = "<group>"; };
 		D123EFED21FB782C00CE8718 /* NightscoutDataMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightscoutDataMessage.swift; sourceTree = "<group>"; };
@@ -729,6 +735,16 @@
 			name = helpers;
 			sourceTree = "<group>";
 		};
+		D12225D722CE3F7F00A3EFF2 /* Loop */ = {
+			isa = PBXGroup;
+			children = (
+				D12225D122CE338000A3EFF2 /* LoopStateView.swift */,
+				D12225D322CE3F5A00A3EFF2 /* LoopPanelView.swift */,
+				D12225D522CE3F7800A3EFF2 /* LoopPanelView.xib */,
+			);
+			name = Loop;
+			sourceTree = "<group>";
+		};
 		D133079C21C85FC600DC6879 /* regression */ = {
 			isa = PBXGroup;
 			children = (
@@ -791,6 +807,7 @@
 		D1BA903620D303E700A0EBD1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				D12225D722CE3F7F00A3EFF2 /* Loop */,
 				D1F94ECA223FFD5400BB0A4D /* stats */,
 				D1BA903420D3033500A0EBD1 /* GroupedLabelsView.swift */,
 				D1BA903720D3046600A0EBD1 /* PaddingLabel.swift */,
@@ -1046,6 +1063,7 @@
 				D1DA7C1B21B97EC800B39675 /* alarm-notification.m4a in Resources */,
 				D1C96AB121CCFE2200B08C2C /* Nightscout.storyboard in Resources */,
 				D1DA7C7321C01CB100B39675 /* Preferences.storyboard in Resources */,
+				D12225D622CE3F7800A3EFF2 /* LoopPanelView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1271,6 +1289,7 @@
 				D1F94ECE223FFE2A00BB0A4D /* GlucoseDistributionView.swift in Sources */,
 				D160D086220C534E002B4633 /* ButtonRowWithDynamicDetails.swift in Sources */,
 				D133079A21C85FAE00DC6879 /* Matrix.swift in Sources */,
+				D12225D422CE3F5A00A3EFF2 /* LoopPanelView.swift in Sources */,
 				4351E6B01D2EFA8C001E4AE4 /* StatisticsRepository.swift in Sources */,
 				43119B8D1C3885A700DD6D35 /* ChartPainter.swift in Sources */,
 				D16FC35B226E129400AB4DE3 /* MenuActionCell.swift in Sources */,
@@ -1331,6 +1350,7 @@
 				43F1E0EE1D07693300C329A2 /* AlarmRule.swift in Sources */,
 				D17F7938224D3C500074907B /* PersistentHighViewController.swift in Sources */,
 				432E62EF1D17359600DD7978 /* StringExtension.swift in Sources */,
+				D12225D222CE338000A3EFF2 /* LoopStateView.swift in Sources */,
 				D1D1623E221AAC05006F990A /* WatchSyncRequestMessage.swift in Sources */,
 				43F1E1011D07698000C329A2 /* AppDelegate.swift in Sources */,
 				D16C8EDB221068F000192117 /* VolumeChangeDetector.swift in Sources */,

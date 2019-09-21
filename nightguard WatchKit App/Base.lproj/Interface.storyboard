@@ -126,6 +126,13 @@
                                                     <fontDescription key="font" type="system" pointSize="11"/>
                                                 </label>
                                             </items>
+                                            <gestureRecognizers>
+                                                <tapGestureRecognizer id="Fkc-P8-G8K">
+                                                    <connections>
+                                                        <action selector="onMessageTapped:" destination="AgC-eL-Hgc" id="1f8-Mg-fPu"/>
+                                                    </connections>
+                                                </tapGestureRecognizer>
+                                            </gestureRecognizers>
                                             <color key="backgroundColor" white="1" alpha="0.74585295376712324" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <edgeInsets key="margins" left="6" right="6" top="3" bottom="3"/>
                                         </group>
@@ -136,10 +143,10 @@
                                     <items>
                                         <group width="145" alignment="center" verticalAlignment="center" spacing="5" id="buz-gm-eBT">
                                             <items>
-                                                <group alignment="right" layout="vertical" spacing="2" id="7et-RM-5lc">
+                                                <group alignment="left" layout="vertical" spacing="2" id="7et-RM-5lc">
                                                     <items>
                                                         <imageView alignment="left" image="loop_fresh" contentMode="scaleAspectFit" id="lNa-n1-hND"/>
-                                                        <label alignment="center" verticalAlignment="center" text="1min" minimumScaleFactor="0.0" id="qch-q4-Lk3">
+                                                        <label alignment="center" verticalAlignment="center" text="1min" minimumScaleFactor="0.5" id="qch-q4-Lk3">
                                                             <fontDescription key="font" type="system" pointSize="10"/>
                                                         </label>
                                                     </items>
@@ -152,83 +159,95 @@
                                                     </gestureRecognizers>
                                                     <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </group>
-                                                <group width="25" alignment="right" layout="vertical" radius="2" spacing="0.0" id="RqA-0F-ci7">
+                                                <group alignment="left" layout="vertical" id="LR5-Rl-OPe">
                                                     <items>
-                                                        <label width="1" alignment="left" verticalAlignment="center" text="↝" textAlignment="center" numberOfLines="2" minimumScaleFactor="0.20000000000000001" id="Sef-bE-31q">
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <fontDescription key="font" type="system" pointSize="7"/>
-                                                        </label>
-                                                        <group width="1" alignment="left" verticalAlignment="center" radius="2" id="jfm-hq-ETF">
+                                                        <group alignment="right" spacing="5" id="UAN-dM-QfG">
                                                             <items>
-                                                                <label width="100" alignment="left" text="112" textAlignment="center" id="Feb-1y-6m9">
-                                                                    <fontDescription key="font" type="system" pointSize="10"/>
-                                                                </label>
+                                                                <group width="25" alignment="right" layout="vertical" radius="2" spacing="0.0" id="RqA-0F-ci7">
+                                                                    <items>
+                                                                        <label width="1" alignment="left" verticalAlignment="center" text="↝" textAlignment="center" numberOfLines="2" minimumScaleFactor="0.20000000000000001" id="Sef-bE-31q">
+                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <fontDescription key="font" type="system" pointSize="7"/>
+                                                                        </label>
+                                                                        <group width="1" alignment="left" verticalAlignment="center" radius="2" id="jfm-hq-ETF">
+                                                                            <items>
+                                                                                <label width="100" alignment="left" text="112" textAlignment="center" minimumScaleFactor="0.5" id="Feb-1y-6m9">
+                                                                                    <fontDescription key="font" type="system" pointSize="10"/>
+                                                                                </label>
+                                                                            </items>
+                                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <edgeInsets key="margins" left="2" right="2" top="0.0" bottom="0.0"/>
+                                                                        </group>
+                                                                    </items>
+                                                                    <gestureRecognizers>
+                                                                        <tapGestureRecognizer id="gwy-cV-6Nh">
+                                                                            <connections>
+                                                                                <action selector="onShowHideLoopUI:" destination="AgC-eL-Hgc" id="53i-hL-QYD"/>
+                                                                            </connections>
+                                                                        </tapGestureRecognizer>
+                                                                    </gestureRecognizers>
+                                                                    <color key="backgroundColor" white="1" alpha="0.50470890410000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <edgeInsets key="margins" left="1" right="1" top="1" bottom="1"/>
+                                                                </group>
+                                                                <group width="45" alignment="right" layout="vertical" radius="2" spacing="0.0" id="w1M-eK-1N0">
+                                                                    <items>
+                                                                        <label width="1" alignment="left" verticalAlignment="center" text="BASAL" textAlignment="center" numberOfLines="2" minimumScaleFactor="0.20000000000000001" id="jE0-Ch-gAB">
+                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <fontDescription key="font" type="system" pointSize="7"/>
+                                                                        </label>
+                                                                        <group width="1" alignment="left" verticalAlignment="center" radius="2" id="LVF-mv-jKT">
+                                                                            <items>
+                                                                                <label width="100" alignment="left" text="0.25U" textAlignment="center" minimumScaleFactor="0.5" id="jor-Fi-ZAB">
+                                                                                    <fontDescription key="font" type="system" pointSize="10"/>
+                                                                                </label>
+                                                                            </items>
+                                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <edgeInsets key="margins" left="2" right="2" top="0.0" bottom="0.0"/>
+                                                                        </group>
+                                                                    </items>
+                                                                    <gestureRecognizers>
+                                                                        <tapGestureRecognizer id="TKT-c3-gnW">
+                                                                            <connections>
+                                                                                <action selector="onShowHideLoopUI:" destination="AgC-eL-Hgc" id="TOG-0C-0bg"/>
+                                                                            </connections>
+                                                                        </tapGestureRecognizer>
+                                                                    </gestureRecognizers>
+                                                                    <color key="backgroundColor" white="1" alpha="0.50470890410000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <edgeInsets key="margins" left="1" right="1" top="1" bottom="1"/>
+                                                                </group>
+                                                                <group width="32" alignment="right" layout="vertical" radius="2" spacing="0.0" id="oDV-Ob-R7q">
+                                                                    <items>
+                                                                        <label width="1" alignment="left" verticalAlignment="center" text="COB" textAlignment="center" minimumScaleFactor="0.20000000000000001" id="jxG-0i-ClD">
+                                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <fontDescription key="font" type="system" pointSize="7"/>
+                                                                        </label>
+                                                                        <group width="1" alignment="left" verticalAlignment="center" radius="2" id="nuC-Sf-GLr">
+                                                                            <items>
+                                                                                <label width="100" alignment="left" text="11.6g" textAlignment="center" minimumScaleFactor="0.5" id="m4N-ql-Xo9">
+                                                                                    <fontDescription key="font" type="system" pointSize="10"/>
+                                                                                </label>
+                                                                            </items>
+                                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <edgeInsets key="margins" left="2" right="2" top="0.0" bottom="0.0"/>
+                                                                        </group>
+                                                                    </items>
+                                                                    <gestureRecognizers>
+                                                                        <tapGestureRecognizer id="Fan-Ga-2bF">
+                                                                            <connections>
+                                                                                <action selector="onShowHideLoopUI:" destination="AgC-eL-Hgc" id="ctt-UA-Ngf"/>
+                                                                            </connections>
+                                                                        </tapGestureRecognizer>
+                                                                    </gestureRecognizers>
+                                                                    <color key="backgroundColor" white="1" alpha="0.50470890410000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <edgeInsets key="margins" left="1" right="1" top="1" bottom="1"/>
+                                                                </group>
                                                             </items>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <edgeInsets key="margins" left="2" right="2" top="0.0" bottom="0.0"/>
                                                         </group>
-                                                    </items>
-                                                    <gestureRecognizers>
-                                                        <tapGestureRecognizer id="gwy-cV-6Nh">
-                                                            <connections>
-                                                                <action selector="onShowHideLoopUI:" destination="AgC-eL-Hgc" id="53i-hL-QYD"/>
-                                                            </connections>
-                                                        </tapGestureRecognizer>
-                                                    </gestureRecognizers>
-                                                    <color key="backgroundColor" white="1" alpha="0.50470890410000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <edgeInsets key="margins" left="1" right="1" top="1" bottom="1"/>
-                                                </group>
-                                                <group width="50" alignment="right" layout="vertical" radius="2" spacing="0.0" id="w1M-eK-1N0">
-                                                    <items>
-                                                        <label width="1" alignment="left" verticalAlignment="center" text="BASAL" textAlignment="center" numberOfLines="2" minimumScaleFactor="0.20000000000000001" id="jE0-Ch-gAB">
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <fontDescription key="font" type="system" pointSize="7"/>
+                                                        <label alignment="right" text="REC BOLUS: 0.65U" numberOfLines="0" id="GBF-Yd-hKK">
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="font" type="system" pointSize="10"/>
                                                         </label>
-                                                        <group width="1" alignment="left" verticalAlignment="center" radius="2" id="LVF-mv-jKT">
-                                                            <items>
-                                                                <label width="100" alignment="left" text="0.200U" textAlignment="center" id="jor-Fi-ZAB">
-                                                                    <fontDescription key="font" type="system" pointSize="10"/>
-                                                                </label>
-                                                            </items>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <edgeInsets key="margins" left="2" right="2" top="0.0" bottom="0.0"/>
-                                                        </group>
                                                     </items>
-                                                    <gestureRecognizers>
-                                                        <tapGestureRecognizer id="TKT-c3-gnW">
-                                                            <connections>
-                                                                <action selector="onShowHideLoopUI:" destination="AgC-eL-Hgc" id="TOG-0C-0bg"/>
-                                                            </connections>
-                                                        </tapGestureRecognizer>
-                                                    </gestureRecognizers>
-                                                    <color key="backgroundColor" white="1" alpha="0.50470890410000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <edgeInsets key="margins" left="1" right="1" top="1" bottom="1"/>
-                                                </group>
-                                                <group width="25" alignment="right" layout="vertical" radius="2" spacing="0.0" id="oDV-Ob-R7q">
-                                                    <items>
-                                                        <label width="1" alignment="left" verticalAlignment="center" text="COB" textAlignment="center" numberOfLines="2" minimumScaleFactor="0.20000000000000001" id="jxG-0i-ClD">
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <fontDescription key="font" type="system" pointSize="7"/>
-                                                        </label>
-                                                        <group width="1" alignment="left" verticalAlignment="center" radius="2" id="nuC-Sf-GLr">
-                                                            <items>
-                                                                <label width="100" alignment="left" text="11g" textAlignment="center" id="m4N-ql-Xo9">
-                                                                    <fontDescription key="font" type="system" pointSize="10"/>
-                                                                </label>
-                                                            </items>
-                                                            <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <edgeInsets key="margins" left="2" right="2" top="0.0" bottom="0.0"/>
-                                                        </group>
-                                                    </items>
-                                                    <gestureRecognizers>
-                                                        <tapGestureRecognizer id="Fan-Ga-2bF">
-                                                            <connections>
-                                                                <action selector="onShowHideLoopUI:" destination="AgC-eL-Hgc" id="ctt-UA-Ngf"/>
-                                                            </connections>
-                                                        </tapGestureRecognizer>
-                                                    </gestureRecognizers>
-                                                    <color key="backgroundColor" white="1" alpha="0.50470890410000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <edgeInsets key="margins" left="1" right="1" top="1" bottom="1"/>
                                                 </group>
                                             </items>
                                         </group>
@@ -257,6 +276,7 @@
                         <outlet property="loopGroup" destination="FLE-1H-lKY" id="W32-AH-UM4"/>
                         <outlet property="loopIndicatorGroup" destination="7et-RM-5lc" id="Qbr-1c-Z0X"/>
                         <outlet property="loopIndicatorImage" destination="lNa-n1-hND" id="t6k-yU-1MG"/>
+                        <outlet property="loopInfoLabel" destination="GBF-Yd-hKK" id="zvi-xs-9t2"/>
                         <outlet property="loopMinutesLabel" destination="qch-q4-Lk3" id="3qI-5C-i8S"/>
                         <outlet property="loopPredictionGroup" destination="RqA-0F-ci7" id="6MA-cQ-SBK"/>
                         <outlet property="loopPredictionLabel" destination="Feb-1y-6m9" id="4ER-SR-F5u"/>

@@ -22,7 +22,7 @@ class MainViewController: UIViewController, SlideToSnoozeDelegate {
     @IBOutlet weak var batteryLabel: UILabel!
     @IBOutlet weak var iobLabel: UILabel!
     @IBOutlet weak var spriteKitView: UIView!
-    @IBOutlet weak var errorPanelView: UIView!
+    @IBOutlet weak var errorPanelView: TouchReportingView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var rawValuesPanel: GroupedLabelsView!
     @IBOutlet weak var bgStackView: UIStackView!
@@ -30,6 +30,7 @@ class MainViewController: UIViewController, SlideToSnoozeDelegate {
     @IBOutlet weak var actionsMenuButton: UIButton!
     @IBOutlet weak var actionsMenuButtonPanelView: UIView!
     @IBOutlet weak var statsPanelView: BasicStatsPanelView!
+    @IBOutlet weak var loopPanelView: LoopPanelView!
     @IBOutlet weak var slideToSnoozeView: SlideToSnoozeView!
     
     // currently presented bedside view controller instance
@@ -69,6 +70,16 @@ class MainViewController: UIViewController, SlideToSnoozeDelegate {
         skView.addGestureRecognizer(pinchGesture)
         
         errorPanelView.isHidden = true
+        errorPanelView.onTouchUpInside = {
+            DispatchQueue.main.async { [weak self] in
+                self?.errorPanelView.isHidden = true
+            }
+        }
+        
+        loopPanelView.isHidden = !LoopService.singleton.enabled
+        loopPanelView.onExpanded = { [weak self] in
+            self?.loadAndPaintChartData(forceRepaint: true)
+        }
         
         // decide where to present the raw bg panel, depending on the device screen size: for small screens (under 4.7 inches) the raw bg panel is stacked under the bg label; for larger screens, the raw bg panel is near (right side of) the bg label
         let screenSize = UIScreen.main.bounds.size
@@ -132,6 +143,8 @@ class MainViewController: UIViewController, SlideToSnoozeDelegate {
                 }
             }
         }
+        
+        loopPanelView.isHidden = !LoopService.singleton.enabled
         
         slideToSnoozeView.setNeedsLayout()
         slideToSnoozeView.layoutIfNeeded()
@@ -293,6 +306,10 @@ class MainViewController: UIViewController, SlideToSnoozeDelegate {
         // => in that case the user has to know that the values are old!
         self.loadAndPaintCurrentBgData()
         self.loadAndPaintChartData(forceRepaint: forceRepaint)
+        
+        // update Loop UI
+        self.loopPanelView.updateLoopUI()
+        self.bedsideViewController?.updateLoopUI()
     }
     
     func slideToSnoozeDelegateDidFinish(_ sender: SlideToSnoozeView) {
@@ -482,7 +499,16 @@ class MainViewController: UIViewController, SlideToSnoozeDelegate {
     
     fileprivate func paintChartData(todaysData : [BloodSugar], yesterdaysData : [BloodSugar]) {
         
-        let todaysDataWithPrediction = todaysData + PredictionService.singleton.nextHourGapped
+//        let todaysDataWithPrediction = todaysData + PredictionService.singleton.nextHourGapped
+        var predictedReadings: [BloodSugar]?
+        if loopPanelView.isExpanded {
+            predictedReadings = LoopService.singleton.loopData?.predictedReadings
+        }
+        if predictedReadings == nil {
+            predictedReadings = PredictionService.singleton.nextHourGapped
+        }
+        
+        let todaysDataWithPrediction = todaysData + (predictedReadings ?? [])
         
         self.chartScene.paintChart(
             [todaysDataWithPrediction, yesterdaysData],

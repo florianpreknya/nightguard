@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoopPanelView" customModule="nightguard" customModuleProvider="target">
+            <connections>
+                <outlet property="basalPanel" destination="kKs-Rw-SGA" id="1RE-nh-fCa"/>
+                <outlet property="cobPanel" destination="DJ9-0M-0MC" id="f9d-BH-AbN"/>
+                <outlet property="infoLabel" destination="pTH-v0-IcD" id="SKR-nW-fJY"/>
+                <outlet property="loopStateView" destination="3lg-Ap-MuM" id="mgk-jJ-gDx"/>
+                <outlet property="minutesLabel" destination="4IQ-vi-Og6" id="UlN-tl-f71"/>
+                <outlet property="predictionPanel" destination="L0e-dx-Dga" id="NU2-86-EYe"/>
+                <outlet property="touchReportingView" destination="b9i-l2-h1c" id="ZEQ-ez-0DZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="445" height="104"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lFb-iW-XJo">
+                    <rect key="frame" x="4" y="0.0" width="437" height="104"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="Sej-y7-JMx">
+                            <rect key="frame" x="0.0" y="0.0" width="147" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H0f-VM-DzI">
+                            <rect key="frame" x="0.0" y="0.0" width="56" height="88"/>
+                            <subviews>
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lg-Ap-MuM" customClass="LoopStateView" customModule="nightguard" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="56" id="Bt6-75-340"/>
+                                        <constraint firstAttribute="width" secondItem="3lg-Ap-MuM" secondAttribute="height" multiplier="1:1" id="SHA-OL-stI"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4IQ-vi-Og6">
+                                    <rect key="frame" x="0.0" y="56" width="56" height="32"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="32" id="uiG-We-7Hl"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pTH-v0-IcD" customClass="PaddingLabel" customModule="nightguard" customModuleProvider="target">
+                            <rect key="frame" x="64" y="0.0" width="221" height="80"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0e-dx-Dga" customClass="GroupedLabelsView" customModule="nightguard" customModuleProvider="target">
+                            <rect key="frame" x="293" y="0.0" width="32" height="80"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="5md-CI-bAG"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKs-Rw-SGA" customClass="GroupedLabelsView" customModule="nightguard" customModuleProvider="target">
+                            <rect key="frame" x="333" y="0.0" width="56" height="80"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="56" id="E9E-KK-sJ2"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJ9-0M-0MC" customClass="GroupedLabelsView" customModule="nightguard" customModuleProvider="target">
+                            <rect key="frame" x="397" y="0.0" width="40" height="80"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="kEL-pF-ysf"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="pTH-v0-IcD" firstAttribute="centerY" secondItem="L0e-dx-Dga" secondAttribute="centerY" id="SUH-bC-ggu"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="Sej-y7-JMx"/>
+                        </mask>
+                    </variation>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9i-l2-h1c" customClass="TouchReportingView" customModule="nightguard" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="445" height="104"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="b9i-l2-h1c" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="1dS-d7-HpA"/>
+                <constraint firstItem="lFb-iW-XJo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="2me-88-IHd"/>
+                <constraint firstItem="lFb-iW-XJo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="4" id="IxK-Lo-NYB"/>
+                <constraint firstItem="b9i-l2-h1c" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="UWX-f5-3Gg"/>
+                <constraint firstItem="lFb-iW-XJo" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Vfi-1W-IWI"/>
+                <constraint firstItem="lFb-iW-XJo" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-4" id="YQJ-F2-SmT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="b9i-l2-h1c" secondAttribute="trailing" id="eWQ-fY-QJi"/>
+                <constraint firstItem="b9i-l2-h1c" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="pBo-Iz-hci"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="197.59999999999999" y="-187.1064467766117"/>
+        </view>
+    </objects>
+</document>

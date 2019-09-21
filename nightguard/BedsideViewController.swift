@@ -26,6 +26,16 @@ class BedsideViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var snoozeInfoLabel: UILabel!
     @IBOutlet weak var alertInfoLabel: UILabel!
+    @IBOutlet weak var loopStateView: LoopStateView!
+    
+    // References to registered notification center observers
+    fileprivate var notificationObservers: [Any] = []
+    
+    deinit {
+        for observer in notificationObservers {
+            NotificationCenter.default.removeObserver(observer)
+        }
+    }
 
     static func instantiate() -> BedsideViewController {
         return UIStoryboard(name: "Bedside", bundle: Bundle.main).instantiateViewController(
@@ -80,6 +90,15 @@ class BedsideViewController: UIViewController {
         
         updateCurrentNightscoutInfo()
         updateAlarmInfo()
+        
+        updateLoopUI()
+        notificationObservers = [
+            NotificationCenter.default.addObserver(forName: .LoopDataChanged, object: LoopService.singleton, queue: nil) { [weak self] _ in
+                dispatchOnMain { [weak self] in
+                    self?.updateLoopUI()
+                }
+            }
+        ]
     }
     
     override func viewDidLayoutSubviews() {
@@ -114,5 +133,31 @@ class BedsideViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         self.timeLabel.text = formatter.string(from: Date())
+    }
+    
+    func updateLoopUI() {
+        
+        guard LoopService.singleton.enabled else {
+            loopStateView.isHidden = true
+            return
+        }
+        
+        guard let loopData = LoopService.singleton.loopData else {
+            loopStateView.isHidden = true
+            return
+        }
+        
+        switch loopData.state {
+        case .fresh:
+            loopStateView.tintColor = UIColor.App.Loop.fresh
+        case .aging:
+            loopStateView.tintColor = UIColor.App.Loop.aging
+        case .stale:
+            loopStateView.tintColor = UIColor.App.Loop.stale
+        case .unknown:
+            loopStateView.tintColor = UIColor.App.Loop.unknown
+        }
+
+        loopStateView.isHidden = false
     }
 }

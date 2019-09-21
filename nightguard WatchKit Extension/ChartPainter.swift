@@ -149,23 +149,28 @@ class ChartPainter {
             let maxYValue = calcYValue(Float(maxBgValue))
             
             let distanceFromNow = Date().timeIntervalSince(endBGValue.date)
+            var firstInFutureTimestamp: TimeInterval?
             if (foregroundColor == GREEN.cgColor) && (distanceFromNow < 0) {
                 
 //                print(endBGValue.date)
+                if firstInFutureTimestamp == nil {
+                    firstInFutureTimestamp = bgValues[currentPoint].timestamp
+                }
                 
                 // a time in future indicates a predicted value!
                 let nextReadingPoint = CGPoint(x: calcXValue(bgValues[currentPoint].timestamp), y: endOfLineYValue)
 
                 context.strokePath()
-
+                
 //                context.beginPath();
                 
                 // fading points, opacity decreases in distant future (one hour)
-                let opacity = Swift.min(1, Swift.max(0, CGFloat(3600 + distanceFromNow) / 4200))
+                let isLoopPrediction = ((bgValues[maxPoints-1].timestamp - firstInFutureTimestamp!) / 1000) > 3600
+                let opacity: CGFloat = isLoopPrediction ? 1.0 : Swift.min(1, Swift.max(0, CGFloat(3600 + distanceFromNow) / 4200))
                 let pointColor = PURPLE.withAlphaComponent(opacity)
                 context.setFillColor(pointColor.cgColor)
-                context.setStrokeColor(pointColor.cgColor)
-                let rect = CGRect(origin: nextReadingPoint, size: CGSize(width: 2, height: 2))
+                context.setStrokeColor(isLoopPrediction ? UIColor.clear.cgColor : pointColor.cgColor)
+                let rect = CGRect(origin: nextReadingPoint, size: CGSize(width: isLoopPrediction ? 2.5 : 2, height: isLoopPrediction ? 2.5 : 2))
                 context.addEllipse(in: rect)
                 context.drawPath(using: .fillStroke)
                 context.strokePath()

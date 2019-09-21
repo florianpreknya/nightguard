@@ -397,7 +397,14 @@
                                 <rect key="frame" x="0.0" y="268" width="375" height="365"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rF-Wm-FbJ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TaV-Iy-Zgq" customClass="LoopPanelView" customModule="nightguard" customModuleProvider="target">
+                                <rect key="frame" x="8" y="268" width="359" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="3za-kf-kOU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rF-Wm-FbJ" customClass="TouchReportingView" customModule="nightguard" customModuleProvider="target">
                                 <rect key="frame" x="100.00000000000001" y="276" width="175.33333333333337" height="23.666666666666686"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❌ Some error message..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tea-wl-rpX">
@@ -457,9 +464,11 @@
                         <accessibility key="accessibilityConfiguration" label="Preferences"/>
                         <constraints>
                             <constraint firstItem="tZK-nt-kLA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1rF-Wm-FbJ" secondAttribute="trailing" constant="16" id="48s-0a-W8r"/>
+                            <constraint firstItem="TaV-Iy-Zgq" firstAttribute="top" secondItem="JZR-hs-OI1" secondAttribute="bottom" constant="16" id="6Cp-Al-RbA"/>
                             <constraint firstItem="1rF-Wm-FbJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tZK-nt-kLA" secondAttribute="leading" constant="16" id="8PW-cQ-aAZ"/>
                             <constraint firstItem="MNg-kT-Em2" firstAttribute="bottom" secondItem="tZK-nt-kLA" secondAttribute="bottom" id="ESq-je-bO9"/>
                             <constraint firstItem="1rF-Wm-FbJ" firstAttribute="top" secondItem="dot-Yq-gkc" secondAttribute="top" constant="8" id="Ego-v1-CFB"/>
+                            <constraint firstItem="TaV-Iy-Zgq" firstAttribute="leading" secondItem="tZK-nt-kLA" secondAttribute="leading" constant="8" id="Jlk-mW-xzg"/>
                             <constraint firstItem="JZR-hs-OI1" firstAttribute="top" secondItem="tZK-nt-kLA" secondAttribute="top" constant="8" id="N6m-xR-3v6"/>
                             <constraint firstItem="dot-Yq-gkc" firstAttribute="leading" secondItem="tZK-nt-kLA" secondAttribute="leading" id="OWA-mS-SW6"/>
                             <constraint firstItem="tZK-nt-kLA" firstAttribute="trailing" secondItem="MNg-kT-Em2" secondAttribute="trailing" id="S11-4t-Q5g"/>
@@ -471,6 +480,7 @@
                             <constraint firstItem="dot-Yq-gkc" firstAttribute="trailing" secondItem="tZK-nt-kLA" secondAttribute="trailing" id="tbn-eR-7gt"/>
                             <constraint firstItem="G6P-2g-zF8" firstAttribute="centerY" secondItem="MNg-kT-Em2" secondAttribute="centerY" id="uWf-Eb-2Nu"/>
                             <constraint firstItem="dot-Yq-gkc" firstAttribute="top" secondItem="JZR-hs-OI1" secondAttribute="bottom" constant="16" id="vPN-8e-kWZ"/>
+                            <constraint firstItem="tZK-nt-kLA" firstAttribute="trailing" secondItem="TaV-Iy-Zgq" secondAttribute="trailing" constant="8" id="wJF-QY-Jwd"/>
                             <constraint firstItem="JZR-hs-OI1" firstAttribute="leading" secondItem="tZK-nt-kLA" secondAttribute="leading" constant="8" id="zBV-oh-lrB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tZK-nt-kLA"/>
@@ -490,6 +500,7 @@
                         <outlet property="errorPanelView" destination="1rF-Wm-FbJ" id="VhD-o3-WnA"/>
                         <outlet property="iobLabel" destination="sxg-9W-FFR" id="DEM-gT-C3j"/>
                         <outlet property="lastUpdateLabel" destination="FFv-EO-ylg" id="KqE-n5-OYo"/>
+                        <outlet property="loopPanelView" destination="TaV-Iy-Zgq" id="Zsr-S2-Pdq"/>
                         <outlet property="rawValuesPanel" destination="XtI-XB-VeV" id="1T6-VA-eJr"/>
                         <outlet property="slideToSnoozeView" destination="MNg-kT-Em2" id="GGV-wd-gUK"/>
                         <outlet property="spriteKitView" destination="dot-Yq-gkc" id="VQK-0m-Y6R"/>
@@ -499,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ktO-hG-udg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="601.875" y="-306.33802816901408"/>
+            <point key="canvasLocation" x="600.79999999999995" y="-306.6502463054187"/>
         </scene>
         <!--Nightscout-->
         <scene sceneID="pNU-Te-rip">

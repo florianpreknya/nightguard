@@ -31,5 +31,12 @@ extension UIColor {
         }
         
         #endif
+        
+        struct Loop {
+            static let fresh = UIColor(red: 76 / 255, green: 217 / 255, blue: 100 / 255, alpha: 1)
+            static let aging = UIColor(red: 1, green: 204 / 255, blue: 0, alpha: 1)
+            static let stale = UIColor(red: 1, green: 59 / 255, blue: 48 / 255, alpha: 1)
+            static let unknown = UIColor(red: 198 / 255, green: 199 / 255, blue: 201 / 255, alpha: 1)
+        }
     }
 }

@@ -43,7 +43,8 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
     @IBOutlet var loopBasalLabel: WKInterfaceLabel!
     @IBOutlet var loopCOBGroup: WKInterfaceGroup!
     @IBOutlet var loopCOBLabel: WKInterfaceLabel!
-
+    @IBOutlet var loopInfoLabel: WKInterfaceLabel!
+    
     var isLoopUIExpanded = false {
         didSet {
             loopIndicatorGroup.setHorizontalAlignment(isLoopUIExpanded ? .left : .right)
@@ -303,7 +304,13 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         self.animate(withDuration: 0.4) { [weak self] in
             guard let self = self else { return }
             self.isLoopUIExpanded = !self.isLoopUIExpanded
+            
+            self.paintChartData(todaysData: self.cachedTodaysBgValues, yesterdaysData: self.cachedYesterdaysBgValues, moveToLatestValue: false)
         }
+    }
+    
+    @IBAction func onMessageTapped(_ sender: Any) {
+        showMessage(nil)
     }
     
     // this has to be created programmatically, since only this way
@@ -328,6 +335,13 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         errorLabel.setText(message)
         errorLabel.setTextColor(isError ? .red : .black)
         errorGroup.setHidden(message == nil ? true : false)
+
+        // hide Loop group when message label is presented, show it when hidden (if enabled)
+        if message == nil {
+            updateLoopUI()
+        } else {
+            loopGroup.setHidden(true)
+        }
     }
     
     func updateInterface(withNightscoutData nightscoutData: NightscoutData?, error: Error?) {
@@ -483,7 +497,16 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         
         let bounds = WKInterfaceDevice.current().screenBounds
         
-        let todaysDataWithPrediction = todaysData + PredictionService.singleton.nextHourGapped
+        var predictedReadings: [BloodSugar]?
+        if isLoopUIExpanded {
+            predictedReadings = LoopService.singleton.loopData?.predictedReadings
+        }
+        if predictedReadings == nil {
+            predictedReadings = PredictionService.singleton.nextHourGapped
+        }
+        
+        let todaysDataWithPrediction = todaysData + (predictedReadings ?? [])
+
         self.chartScene.paintChart(
             [todaysDataWithPrediction, yesterdaysData],
             newCanvasWidth: bounds.width * 6,
@@ -544,15 +567,17 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         }
         
         loopMinutesLabel.setText("\(loopData.minutesAgo)min")
-        switch loopData.minutesAgo {
-        case 0...5:
+        switch loopData.state {
+        case .fresh:
             loopIndicatorImage.setImageNamed("loop_fresh")
-        case 6...15:
+        case .aging:
             loopIndicatorImage.setImageNamed("loop_aging")
-        default:
+        case .stale:
             loopIndicatorImage.setImageNamed("loop_stale")
+        case .unknown:
+            loopIndicatorImage.setImageNamed("loop_unknown")
         }
-        
+
         if let predictionValues = loopData.predictedValues, !predictionValues.isEmpty {
             loopPredictionLabel.setText("\(Int(predictionValues.last!))")
 //            loopPredictionGroup.setHidden(false)
@@ -562,15 +587,30 @@ class InterfaceController: WKInterfaceController, WKCrownDelegate {
         }
         
         if let basalRate = loopData.enactedBasalRate {
-            loopBasalLabel.setText(String(format: "%.3fU", basalRate))
+            let formattedBasalRate = (basalRate.truncatingRemainder(dividingBy: 1) == 0) ? "\(Int(basalRate))" : "\(basalRate)"
+            loopBasalLabel.setText("\(formattedBasalRate) U/h")
 //            loopBasalGroup.setHidden(false)
         } else {
             loopBasalLabel.setText("schedule")
 //            loopBasalGroup.setHidden(true)
         }
 
-        loopCOBLabel.setText("\(Int(loopData.cob))g")
+        loopCOBLabel.setText("\(loopData.cob.cleanValue)g")
         
+        if let failureReason = loopData.failureReason {
+            loopInfoLabel.setTextColor(UIColor.red)
+            loopInfoLabel.setText("❌ \(failureReason)")
+        } else {
+            loopInfoLabel.setTextColor(UIColor.white.withAlphaComponent(0.5))
+            if let recommendedBolus = loopData.recommendedBolus, recommendedBolus > 0 {
+                loopInfoLabel.setText("REC BOLUS: \(recommendedBolus.roundTo3f)U")
+            } else if let recommendedBasalRate = loopData.recommendedBasalRate {
+                loopInfoLabel.setText("REC BASAL: \(recommendedBasalRate.roundTo3f)U")
+            } else {
+                loopInfoLabel.setText(nil)
+            }
+        }
+
         loopGroup.setHidden(false)
     }
 }

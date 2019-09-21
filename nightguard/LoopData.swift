@@ -191,6 +191,13 @@ struct LoopData: Codable {
     }
 }
 
+enum LoopState {
+    case fresh
+    case aging
+    case stale
+    case unknown
+}
+
 extension LoopData {
     
     var minutesAgo: Int {
@@ -201,5 +208,30 @@ extension LoopData {
     // Is the loop data expired (stale data)? Should be refrehed?
     var shouldRefresh: Bool {
         return minutesAgo >= 5
+    }
+    
+    // state, expressed as how old the loop data are
+    var state: LoopState {
+        switch minutesAgo {
+        case 0...5: return .fresh
+        case 6...15: return .aging
+        case 16...12*60: return .stale
+        default: return .unknown
+        }
+    }
+    
+    var predictedReadings: [BloodSugar]? {
+        
+        guard let referenceStartTime = self.predictedValuesStartTime else {
+            return nil
+        }
+        
+        guard let predictedValues = self.predictedValues else {
+            return nil
+        }
+        
+        return (0..<predictedValues.count).map { index in
+            return BloodSugar(value: predictedValues[index], timestamp: referenceStartTime.addingTimeInterval(TimeInterval(index * 60 * 5)).timeIntervalSince1970 * 1000)
+        }
     }
 }

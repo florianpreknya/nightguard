@@ -54,8 +54,8 @@ class GroupedLabelsView: UIStackView {
         isLayoutMarginsRelativeArrangement = true
         
         pinBackground()
-        addArrangedSubview(highlightedLabel)
         addArrangedSubview(label)
+        addArrangedSubview(highlightedLabel)
     }
     
     private func pinBackground() {
